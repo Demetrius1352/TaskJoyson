@@ -1,0 +1,180 @@
+
+
+1. Person Class
+java
+Copy code
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+
+2. Employee Class
+java
+Copy code
+public class Employee {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private int salary;
+
+    public Employee(int id, String firstName, String lastName, int salary) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int raiseSalary(int percent) {
+        salary += (salary * percent) / 100;
+        return salary;
+    }
+
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + getName() + ", salary=" + salary + "]";
+    }
+}
+
+
+3. Circle Class
+java
+Copy code
+public class Circle {
+    private double radius;
+
+    public Circle() {
+        // Default constructor
+    }
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double calculateCircumference() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+
+4. Account Class
+java
+Copy code
+public class Account {
+    private double balance;
+
+    public Account() {
+        // Default constructor
+    }
+
+    public Account(double balance) {
+        this.balance = balance;
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient funds");
+        }
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+}
+
+
+5. Tea Class and Subclasses
+java
+Copy code
+public class Tea {
+    public void prepareTea() {
+        System.out.println("Preparing basic tea with hot water and tea leaves.");
+    }
+
+    public void addMilk() {
+        System.out.println("Adding milk to the tea.");
+    }
+
+    public void addSugar() {
+        System.out.println("Adding sugar to the tea.");
+    }
+}
+
+public class BlackTea extends Tea {
+    @Override
+    public void prepareTea() {
+        super.prepareTea();
+        System.out.println("Adding specific ingredients for Black Tea.");
+    }
+}
+
+public class GreenTea extends Tea {
+    @Override
+    public void prepareTea() {
+        super.prepareTea();
+        System.out.println("Adding specific ingredients for Green Tea.");
+    }
+}
+
+public class HerbalTea extends Tea {
+    @Override
+    public void prepareTea() {
+        super.prepareTea();
+        System.out.println("Adding specific ingredients for Herbal Tea.");
+    }
+}
+
+
+7. Polymorphism with Tea Objects
+java
+Copy code
+public class TeaDemo {
+    public static void main(String[] args) {
+        Tea[] teas = {new BlackTea(), new GreenTea(), new HerbalTea()};
+
+        for (Tea tea : teas) {
+            tea.prepareTea();
+            tea.addMilk();
+            tea.addSugar();
+            System.out.println();
+        }
+    }
+}
